@@ -5,8 +5,9 @@
 #ifndef PROJECT_2_BETAPLAYER_H
 #define PROJECT_2_BETAPLAYER_H
 
+#include "Player.h"
 
-class BetaPlayer {
+class BetaPlayer : public Player {
 
 };
 

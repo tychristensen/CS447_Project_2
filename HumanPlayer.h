@@ -5,8 +5,12 @@
 #ifndef PROJECT_2_HUMANPLAYER_H
 #define PROJECT_2_HUMANPLAYER_H
 
+#include "Player.h"
 
-class HumanPlayer {
+class HumanPlayer : public Player{
+private:
+
+public:
 
 };
 

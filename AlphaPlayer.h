@@ -6,7 +6,9 @@
 #define PROJECT_2_ALPHAPLAYER_H
 
 
-class AlphaPlayer {
+#include "Player.h"
+
+class AlphaPlayer : public Player {
 
 };
 

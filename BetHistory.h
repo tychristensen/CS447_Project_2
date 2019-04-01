@@ -6,8 +6,17 @@
 #define PROJECT_2_BETHISTORY_H
 
 
-class BetHistory {
+#include "Bet.h"
+#include <vector>
 
+class BetHistory {
+private:
+    std::vector<Bet> betHistory;
+public:
+    void clearHistory();
+    void addBet(Bet bet);
+    int getCount();
+    Bet getBet(int n);
 };
 
 
