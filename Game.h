@@ -13,6 +13,7 @@ private:
     int chips0, chips1;
     bool reportFlag;
 public:
+    Game();
     bool playGame(Player::PlayerType p0, Player::PlayerType p1, int& chips0, int& chips1, bool reportFlag);
 };
 
