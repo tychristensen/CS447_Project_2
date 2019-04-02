@@ -6,10 +6,6 @@
 
 Game::Game() {
 
-    int startChips = 1000;
-    p0 = Player(Player::HUMAN, startChips);
-    p1 = Player(Player::HUMAN, startChips);
-    vector<Card> deck;
     for(int i = 0; i < 52; i++) {
         deck.emplace_back(Card("Ace", 1));
         deck.emplace_back(Card("2", 2));

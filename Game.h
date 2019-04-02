@@ -9,9 +9,10 @@
 
 class Game {
 private:
-    Player::PlayerType p0, p1;
+    Player p0(Player::HUMAN, 1000), p1(Player::PlayerType::HUMAN, 1000);
     int chips0, chips1;
     bool reportFlag;
+    vector<Card> deck;
 public:
     Game();
     bool playGame(Player::PlayerType p0, Player::PlayerType p1, int& chips0, int& chips1, bool reportFlag);

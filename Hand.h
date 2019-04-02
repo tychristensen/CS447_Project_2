@@ -12,6 +12,8 @@ class Hand {
 private:
     vector<Card> cards;
 public:
+    Hand();
+    Hand(vector<Card> cards);
     void clear();
     void addCard(Card card);
     int getCount();
