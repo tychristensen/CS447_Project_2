@@ -5,17 +5,22 @@
 #ifndef PROJECT_2_GAME_H
 #define PROJECT_2_GAME_H
 
-#include "Player.h"
+#include "HumanPlayer.h"
+#include "BetaPlayer.h"
+#include "AlphaPlayer.h"
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <random>
 
 class Game {
 private:
-    Player p0(Player::HUMAN, 1000), p1(Player::PlayerType::HUMAN, 1000);
-    int chips0, chips1;
-    bool reportFlag;
     vector<Card> deck;
+    void shuffleDeck();
+    void fillDeck();
 public:
     Game();
-    bool playGame(Player::PlayerType p0, Player::PlayerType p1, int& chips0, int& chips1, bool reportFlag);
+    bool playGame(Player::PlayerType p0Type, Player::PlayerType p1Type, int& chips0, int& chips1, bool reportFlag);
 };
 
 

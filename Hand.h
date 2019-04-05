@@ -15,7 +15,7 @@ public:
     Hand();
     Hand(vector<Card> cards);
     void clear();
-    void addCard(Card card);
+    void addCard(Card& card);
     int getCount();
     Card getCard(int n);
     Hand getVisible();

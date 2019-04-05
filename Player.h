@@ -17,13 +17,14 @@ private:
 public:
     enum PlayerType { HUMAN, ALPHA, BETA };
     Player(int id, int chips);
-    virtual int getBet( Hand opponent, BetHistory bh, int bet2Player, bool canRaise, int pot );
+    virtual int getBet( Hand opponent, BetHistory bh, int bet2Player, bool canRaise, int pot ) = 0;
     int getID();
     void clearHand();
     void dealCard(Card c);
     Hand getHand();
     void addChips(int chips);
     int getChips();
+    BetHistory getBetHistory();
 };
 
 

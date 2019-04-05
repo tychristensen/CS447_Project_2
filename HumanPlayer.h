@@ -6,6 +6,7 @@
 #define PROJECT_2_HUMANPLAYER_H
 
 #include "Player.h"
+#include <iostream>
 
 class HumanPlayer : public Player{
 public:

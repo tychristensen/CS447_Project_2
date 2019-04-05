@@ -8,7 +8,9 @@
 #include "Player.h"
 
 class BetaPlayer : public Player {
-
+public:
+    BetaPlayer(int id, int chips) : Player(id, chips) {};
+    int getBet( Hand opponent, BetHistory bh, int bet2Player, bool canRaise, int pot ) override;
 };
 
 

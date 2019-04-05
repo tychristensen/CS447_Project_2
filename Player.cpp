@@ -32,3 +32,7 @@ void Player::addChips(int chips) {
 int Player::getChips() {
     return chips;
 }
+
+BetHistory Player::getBetHistory() {
+    return betHistory;
+}

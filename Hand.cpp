@@ -14,7 +14,7 @@ void Hand::clear() {
     cards.clear();
 }
 
-void Hand::addCard(Card card) {
+void Hand::addCard(Card& card) {
     cards.emplace_back(card);
 }
 
