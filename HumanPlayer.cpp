@@ -4,17 +4,21 @@
 
 #include "HumanPlayer.h"
 
-int HumanPlayer::getBet(Hand opponent, BetHistory bh, int bet2Player, bool canRaise, int pot) {
+int HumanPlayer::getBet(Hand opponent, BetHistory bh, int bet2Player, bool canRaise, int& pot) {
+
+    cout << endl << "It's player " << getID() << "'s turn" << endl;
 
     cout << endl << "Your hand contains: ";
     for(int i = 0; i < getHand().getCount(); i++) {
         if(i != 0 && i != getHand().getCount()) {
             cout << ", ";
         }
-        cout << getHand().getCard(i).getName();
+        cout << hand.getCard(i).getName();
     }
 
-    cout << endl << "Your opponent's visible hand contains: ";
+    cout << endl << "Your hidden card is a " << hand.getCard(0).getName() << endl;
+
+    cout << "Your opponent's visible hand contains: ";
     for(int i = 0; i < opponent.getCount(); i++) {
         if(i != 0 && i != opponent.getCount()) {
             cout << ", ";
@@ -30,11 +34,8 @@ int HumanPlayer::getBet(Hand opponent, BetHistory bh, int bet2Player, bool canRa
     int bet;
     if(bet2Player == 0) {
         if(canRaise) {
-            cout << "Enter 0 to call or 1 through 10 to raise: ";
+            cout << "Enter 0 to check or 1 through 10 to raise: ";
             cin >> bet;
-            if(bet != 0) {
-                addChips(-1 * bet);
-            }
         } else {
             cout << "You cannot raise this round" << endl;
         }
@@ -70,6 +71,11 @@ int HumanPlayer::getBet(Hand opponent, BetHistory bh, int bet2Player, bool canRa
             }
         }
     }
+
+    pot += bet;
+    addChips(-1 * bet);
+    betHistory.addBet(Bet(bet, getID()));
+
 
     return bet;
 }

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Project_2"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/ty/Desktop/Project_2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/ty/Desktop/Project_2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Project_2">
+				<Option output="/home/ty/Desktop/Project_2/cmake-build-debug/Project_2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ty/Desktop/Project_2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project_2"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Project_2/fast">
+				<Option output="/home/ty/Desktop/Project_2/cmake-build-debug/Project_2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ty/Desktop/Project_2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project_2/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/ty/Desktop/Project_2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ty/Desktop/Project_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/ty/Desktop/Project_2/AlphaPlayer.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/AlphaPlayer.h">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Bet.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Bet.h">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/BetHistory.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/BetHistory.h">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/BetaPlayer.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/BetaPlayer.h">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Card.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Card.h">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Game.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Game.h">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Hand.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Hand.h">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/HumanPlayer.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/HumanPlayer.h">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Player.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/Player.h">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/main.cpp">
+			<Option target="Project_2"/>
+		</Unit>
+		<Unit filename="/home/ty/Desktop/Project_2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

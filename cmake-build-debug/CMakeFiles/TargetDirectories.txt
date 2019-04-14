@@ -1,0 +1,3 @@
+/home/ty/Desktop/Project_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ty/Desktop/Project_2/cmake-build-debug/CMakeFiles/Project_2.dir
+/home/ty/Desktop/Project_2/cmake-build-debug/CMakeFiles/edit_cache.dir

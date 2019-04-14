@@ -8,117 +8,40 @@ Game::Game() {}
 
 bool Game::playGame(Player::PlayerType p0Type, Player::PlayerType p1Type, int &chips0, int &chips1, bool reportFlag) {
 
-    int pot = 0;
+    pot = 0;
 
-    //if(p0Type == Player::HUMAN) {
-        HumanPlayer p0(0, chips0);
-    //}
+    Player* p0;
+    Player* p1;
 
-    //if(p1Type == Player::HUMAN) {
-        HumanPlayer p1(1, chips1);
-    //}
+    switch (p0Type) {
+        case Player::HUMAN:
+            p0 = new HumanPlayer(0, chips0);
+            break;
+        case Player::ALPHA:
+            p0 = new AlphaPlayer(0, chips0);
+            break;
+    }
 
-    for(int i = 0; i < 20; i++) {
-        shuffleDeck();
+    switch(p1Type) {
+        case Player::HUMAN:
+            p1 = new HumanPlayer(1, chips1);
+            break;
+        case Player::ALPHA:
+            p1 = new AlphaPlayer(1, chips1);
+            break;
+    }
 
-        //deal three cards
-        for (int j = 0; j < 3; j++) {
-            if(j != 2) {
-                deck[0].setFaceup(true);
-                deck[1].setFaceup(true);
-            }
-            p0.dealCard(deck[0]);
-            p1.dealCard(deck[1]);
-            deck.erase(deck.begin());
-            deck.erase(deck.begin());
-        }
+    for(int i = 0; i < 10; i++) {
+        doHand(*p0, *p1);
+        doHand(*p1, *p0);
+    }
 
-        p0.addChips(-10);
-        p1.addChips(-10);
-        pot += 20;
-
-        //First round of betting
-        int p0Bet = 0;
-        int p1Bet = 0;
-        cout << endl << "Betting Round " << i + 1 << endl;
-        int numRaises = 0;
-        if(i % 2 == 0) {
-            do {
-                p0Bet = p0.getBet(p1.getHand().getVisible(), p1.getBetHistory(), p1Bet, numRaises < 3, pot);
-                if(p0Bet > 0 && p1Bet != p0Bet)
-                    numRaises++;
-                p1Bet = p1.getBet(p0.getHand().getVisible(), p0.getBetHistory(), p0Bet, numRaises < 3, pot);
-                if(p0Bet == 0) {
-                    if(p1Bet == 0) {
-                        cout << endl << "Both players call" << endl << endl;
-                        break;
-                    } else {
-                        cout << endl << "p1 raises after p0 calls" << endl << endl;
-                        p1.addChips(-1 * p1Bet);
-                        pot += p1Bet;
-                    }
-                } else {
-                    if(p1Bet == 0) {
-                        cout << endl << "p1 folds" << endl << endl;
-                        p0.addChips(pot + p0Bet);
-                        break;
-                    } else if(p1Bet == p0Bet) {
-                        cout << endl << "p1 calls p0" << endl << endl;
-                        pot += p0Bet + p1Bet;
-                        p0.addChips(-1 * p0Bet);
-                        p1.addChips(-1 * p1Bet);
-                        break;
-                    } else {
-                        cout << endl << "p1 raised after p0 raised" << endl;
-                        numRaises++;
-                        p0.addChips(-1 * p0Bet);
-                        p1.addChips(-1 * p1Bet);
-                        pot += p0Bet + p1Bet;
-                        p1Bet -= p0Bet;
-                    }
-                }
-            } while(true);
-        } /*else {
-            p1Bet = p1.getBet(p0.getHand().getVisible(), p0.getBetHistory(), p0Bet, p0.getChips() != 0, pot);
-            p0Bet = p0.getBet(p1.getHand().getVisible(), p0.getBetHistory(), p1Bet, p1.getChips() != 0, pot);
-        }
-
-        //Deal each player a card and go through another round of betting
-        deck[0].setFaceup(true);
-        deck[1].setFaceup(true);
-        p0.dealCard(deck[0]);
-        p1.dealCard(deck[1]);
-        deck.erase(deck.begin());
-        deck.erase(deck.begin());
-
-        if(i % 2 == 1) {
-            p0Bet = p0.getBet(p1.getHand().getVisible(), p1.getBetHistory(), 0, p1.getChips() != 0, pot);
-            p1Bet = p1.getBet(p0.getHand().getVisible(), p0.getBetHistory(), p0Bet, p0.getChips() != 0, pot);
-        } else {
-            p1Bet = p1.getBet(p0.getHand().getVisible(), p0.getBetHistory(), 0, p0.getChips() != 0, pot);
-            p0Bet = p0.getBet(p1.getHand().getVisible(), p0.getBetHistory(), p1Bet, p1.getChips() != 0, pot);
-        }
-
-        //Deal another card and go through final round of bidding
-        deck[0].setFaceup(true);
-        deck[1].setFaceup(true);
-        p0.dealCard(deck[0]);
-        p1.dealCard(deck[1]);
-        deck.erase(deck.begin());
-        deck.erase(deck.begin());
-
-        if(i % 2 == 0) {
-            p0Bet = p0.getBet(p1.getHand().getVisible(), p1.getBetHistory(), 0, p1.getChips() != 0, pot);
-            p1Bet = p1.getBet(p0.getHand().getVisible(), p0.getBetHistory(), p0Bet, p0.getChips() != 0, pot);
-        } else {
-            p1Bet = p1.getBet(p0.getHand().getVisible(), p0.getBetHistory(), 0, p0.getChips() != 0, pot);
-            p0Bet = p0.getBet(p1.getHand().getVisible(), p0.getBetHistory(), p1Bet, p1.getChips() != 0, pot);
-        }*/
-
-        if(p0Bet != 0 || p1Bet != 0)
-            pot = 0;
-        p0.clearHand();
-        p1.clearHand();
+    if(p0->getChips() > p1->getChips()) {
+        cout << "Player 0 wins with " << p0->getChips() << " and Player 1 with " << p1->getChips() << endl;
+    } else if(p0->getChips() < p1->getChips()) {
+        cout << "Player 1 wins with " << p1->getChips() << " and Player 0 with " << p0->getChips() << endl;
+    } else {
+        cout << "Players 0 & 1 tied" << endl;
     }
 
     return false;
@@ -149,4 +72,162 @@ void Game::shuffleDeck() {
     auto rng = default_random_engine {};
     rng.seed(time(0));
     shuffle(deck.begin(), deck.end(), rng);
+}
+
+void Game::doHand(Player& firstPlayer, Player& secondPlayer) {
+
+    shuffleDeck();
+    pot = 0;
+
+    //deal three cards
+    for (int j = 0; j < 3; j++) {
+        if(j != 0) {
+            deck[0].setFaceup(true);
+            deck[1].setFaceup(true);
+        }
+        firstPlayer.dealCard(deck[0]);
+        secondPlayer.dealCard(deck[1]);
+        deck.erase(deck.begin());
+        deck.erase(deck.begin());
+    }
+
+    //setup pot with buy in
+    firstPlayer.addChips(-10);
+    secondPlayer.addChips(-10);
+    pot += 20;
+
+    int bet1 = 0;
+    int bet2 = 0;
+    firstPlayer.clearBetHistory();
+    secondPlayer.clearBetHistory();
+    bool handOver = doBetRound(&firstPlayer, &secondPlayer, bet1, bet2, 0);
+
+    if(handOver) {
+        cout << "Hand over" << endl;
+        firstPlayer.clearHand();
+        secondPlayer.clearHand();
+        return;
+    }
+
+    //deal another card
+    deck[0].setFaceup(true);
+    deck[1].setFaceup(true);
+    firstPlayer.dealCard(deck[0]);
+    secondPlayer.dealCard(deck[1]);
+    deck.erase(deck.begin());
+    deck.erase(deck.begin());
+
+    firstPlayer.clearBetHistory();
+    secondPlayer.clearBetHistory();
+    handOver = doBetRound(&firstPlayer, &secondPlayer, bet1, bet2, 0);
+
+    if(handOver) {
+        cout << "Hand over" << endl;
+        firstPlayer.clearHand();
+        secondPlayer.clearHand();
+        return;
+    }
+
+    //deal final card
+    deck[0].setFaceup(true);
+    deck[1].setFaceup(true);
+    firstPlayer.dealCard(deck[0]);
+    secondPlayer.dealCard(deck[1]);
+    deck.erase(deck.begin());
+    deck.erase(deck.begin());
+
+    firstPlayer.clearBetHistory();
+    secondPlayer.clearBetHistory();
+    handOver = doBetRound(&firstPlayer, &secondPlayer, bet1, bet2, 0);
+
+    if(handOver) {
+        cout << "Hand over" << endl;
+        firstPlayer.clearHand();
+        secondPlayer.clearHand();
+        return;
+    }
+
+    cout << "Player " << firstPlayer.getID() << " had a " << firstPlayer.getHand().getCard(0).getName();
+    cout << " with a total hand value of " << firstPlayer.getHand().evaluate() << endl;
+
+    cout << "Player " << secondPlayer.getID() << " had a " << secondPlayer.getHand().getCard(0).getName();
+    cout << " with a total hand value of " << secondPlayer.getHand().evaluate() << endl;
+
+    if(firstPlayer.getHand().evaluate() > secondPlayer.getHand().evaluate()) {
+        cout << "Player " << firstPlayer.getID() << " wins a pot of " << pot << endl;
+        firstPlayer.addChips(pot);
+        pot = 0;
+    } else if (firstPlayer.getHand().evaluate() < secondPlayer.getHand().evaluate()) {
+        cout << "Player " << secondPlayer.getID() << " wins a pot of " << pot << endl;
+        secondPlayer.addChips(pot);
+        pot = 0;
+    } else {
+        cout << "It's a tie" << endl;
+    }
+
+    firstPlayer.clearHand();
+    secondPlayer.clearHand();
+
+}
+
+bool Game::doBetRound(Player* firstPlayer, Player* secondPlayer, int &bet1, int &bet2, int numRaises) {
+
+    bet1 = firstPlayer->getBet(secondPlayer->getHand().getVisible(), secondPlayer->getBetHistory(), bet2, numRaises < 3, pot);
+
+    if(firstPlayer->getBetHistory().getCount() == 1) {
+        if(bet1 == 0) {
+            cout << endl << "Player " << firstPlayer->getID() << " checks" << endl;
+        } else {
+            cout << endl << "Player " << firstPlayer->getID() << " raises " << bet1 << endl;
+            numRaises++;
+        }
+    } else {
+        if (bet1 == 0) {
+            cout << endl << "Player " << firstPlayer->getID() << " folds" << endl;
+            secondPlayer->addChips(pot);
+            pot = 0;
+            return true;
+        } else if (bet1 == bet2) {
+            cout << endl << "Player " << firstPlayer->getID() << " called Player " << secondPlayer->getID() << endl;
+            bet2 = 0;
+            bet1 = 0;
+            return false;
+        } else {
+            cout << endl << "Player " << firstPlayer->getID() << " raised " << bet1 - bet2 << " after Player " << secondPlayer->getID() << " raised " << bet2 << endl;
+            numRaises++;
+            bet1 -= bet2;
+        }
+    }
+
+
+    bet2 = secondPlayer->getBet(firstPlayer->getHand().getVisible(), firstPlayer->getBetHistory(), bet1, numRaises < 3, pot);
+
+    if (bet1 == 0) {
+        if (bet2 == 0) {
+            cout << endl << "Both players check" << endl << endl;
+            return false;
+        } else {
+            cout << endl << "Player " << secondPlayer->getID() << " raised " << bet2 << endl;
+            numRaises++;
+        }
+    } else {
+        if (bet2 == 0) {
+            cout << endl << "Player " << secondPlayer->getID() << " folds" << endl;
+            firstPlayer->addChips(pot);
+            pot = 0;
+            return true;
+        } else if (bet1 == bet2) {
+            cout << endl << "Player " << secondPlayer->getID() << " called Player " << firstPlayer->getID() << endl;
+            bet1 = 0;
+            bet2 = 0;
+            return false;
+        } else {
+            cout << endl << "Player " << secondPlayer->getID() << " raised " << bet2 - bet1 << " after Player " << firstPlayer->getID() << " raised " << bet1 << endl;
+            numRaises++;
+            bet2 -= bet1;
+        }
+    }
+
+    return doBetRound(firstPlayer, secondPlayer, bet1, bet2, numRaises);
+
 }

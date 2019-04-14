@@ -9,7 +9,7 @@ void BetHistory::clearHistory() {
 }
 
 void BetHistory::addBet(Bet bet) {
-    betHistory.emplace(betHistory.begin(), bet);
+    this->betHistory.push_back(bet);
 }
 
 int BetHistory::getCount() {

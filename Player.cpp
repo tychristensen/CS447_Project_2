@@ -36,3 +36,7 @@ int Player::getChips() {
 BetHistory Player::getBetHistory() {
     return betHistory;
 }
+
+void Player::clearBetHistory() {
+    betHistory.clearHistory();
+}

@@ -18,6 +18,9 @@ private:
     vector<Card> deck;
     void shuffleDeck();
     void fillDeck();
+    int pot = 0;
+    void doHand(Player& firstPlayer, Player& secondPlayer);
+    bool doBetRound(Player* firstPlayer, Player* secondPlayer, int& bet1, int& bet2, int numRaises);
 public:
     Game();
     bool playGame(Player::PlayerType p0Type, Player::PlayerType p1Type, int& chips0, int& chips1, bool reportFlag);
